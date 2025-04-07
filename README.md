@@ -258,7 +258,7 @@ def forward_greedy_de(models, val_preds, val_labels):
 | **Ensemble Method**           | **AUROC** | **Competitive Best** | **Optimal Model Weights** |
 |-------------------------------|-----------|------------------------|----------------------------|
 | Uniform Weighted Average      | 0.8562    | 0.8532                 | MaxViT: 0.20, CoAtNet: 0.20, DenseNet121: 0.20, Swin: 0.20, ConvNeXt: 0.20, VGG19: 0.00 |
-| DE + Forward Greedy (Ours)    | **0.8565**| **0.8543**             | MaxViT: 0.2707, ConvNeXt: 0.2114, DenseNet121: 0.1911, CoAtNet: 0.1496, Swin: 0.1412, VGG19: 0.0360 |
+| DE + Forward Greedy (Ours)    | **0.8565**| **0.8543**             | MaxViT: 0.1663, ConvNeXt: 0.1877, DenseNet121: 0.2052, CoAtNet: 0.1524, Swin: 0.1747, VGG19: 0.1138 |
 
 >  Our **greedy DE ensemble** slightly outperforms both the uniform average and competitive SynthEnsemble benchmark, while also offering interpretable weighting per model.
 
