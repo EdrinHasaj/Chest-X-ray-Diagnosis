@@ -7,6 +7,32 @@ Our goal is to employ a deep learning model to recognize patterns in chest X-ray
 
 ## Table of Contents
 
+- [Dataset](#dataset)  
+- [Dataset Challenges](#dataset-challenges)  
+  - [Class Imbalance Overview](#class-imbalance-overview)  
+  - [Multi-label Disease Co-occurence](#multi-label-disease-co-occurence)  
+  - [Noisy Data](#noisy-data)  
+- [Data Preprocessing](#data-preprocessing)  
+  - [Patient-Level Splitting](#patient-level-splitting)  
+  - [Transformations Applied](#transformations-applied)  
+- [Model Architectures Explored](#model-architectures-explored)  
+- [Singular Model Results](#singular-model-results)  
+- [Gamma Correction Augmentation](#gamma-correction-augmentation)  
+- [Test Time Augmentation (TTA)](#test-time-augmentation-tta)  
+- [Ensemble Modeling](#ensemble-modeling)  
+  - [Uniform Weighted Average](#1-uniform-weighted-average)  
+  - [Differential Evolution + Forward Greedy (Ours)](#2-differential-evolution-de--forward-greedy-selection-novel)  
+  - [Ensemble AUROC Results](#ensemble-auroc-results)  
+  - [AUROC Comparison Chart](#auroc-comparison-chart)  
+- [Model Interpretability with Grad-CAM](#model-interpretability-with-grad-cam)  
+  - [Why Heatmaps?](#why-heatmaps)  
+  - [Heatmap Visualizations (Lung Nodule Sample)](#heatmap-visualizations-lung-nodule-sample)  
+  - [Insights from Grad-CAM](#insights-from-grad-cam)  
+- [Limitations](#limitations)  
+- [Scientific Poster](#scientific-poster)  
+- [Individual Contributions](#individual-contributions)  
+- [Notebook Overview](#notebook-overview)  
+- [References](#references)
 
 
 
@@ -349,6 +375,22 @@ Despite our efforts, two key challenges remained unresolved. First, the issue of
 - Contributed to preprocessing strategies for improving robustness
 
 ## Notebook Overview
+
+| **Folder / File**            | **Contents**                                                                 |
+|-----------------------------|------------------------------------------------------------------------------|
+| `data_visuals.ipynb`        | Notebook for data exploration and visualization.                            |
+| `figures/`                  | Saved plots and images (e.g., Grad-CAM, AUROC curves).                      |
+| `metrics/`                  | Metric comparisons across Normal, Gamma-Corrected, and TTA predictions.     |
+| `model_cross_validation/`   | Contains 6 notebooks for cross-validating each individual model.            |
+| `model_ensembling/`         | - `model_ensembling_de_greedy.ipynb`: Differential Evolution + Greedy ensemble strategy.  |
+|                             | - `model_ensembling_weighted.ipynb`: Uniform weighted ensemble across models.             |
+|                             | - `model_ensembling_heatmaps.ipynb`: Grad-CAM heatmap generation for ensemble outputs.    |
+| `model_training/`           | - `training_1/`: Baseline training scripts.                                 |
+|                             | - `training_2/`: Includes Gamma correction + CLAHE augmentation.            |
+|                             | - `training_fastai/`: Training using fastai.                                |
+|                             | - `training_gamma/`: Scripts for testing various gamma values.              |
+| `tta_singular_models/`      | Notebook for running Test Time Augmentation (TTA) on each individual model. |
+
 
 
 ## References
