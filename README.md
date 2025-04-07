@@ -294,7 +294,7 @@ We generated Grad-CAM heatmaps for **each individual model** and the **ensemble 
 
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/vggnodule.png" width="300"/><br><b>VGG</b></td>
+    <td align="center"><img src="https://github.com/EdrinHasaj/Chest-X-ray-Diagnosis/blob/main/figures/vgg_gradcam.png" width="300"/><br><b>VGG</b></td>
     <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/coatnetnodule.png" width="300"/><br><b>CoAtNet</b></td>
     <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/convnextnodule.png" width="300"/><br><b>ConvNeXt</b></td>
   </tr>
@@ -304,7 +304,7 @@ We generated Grad-CAM heatmaps for **each individual model** and the **ensemble 
     <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/maxvitnodule.png" width="300"/><br><b>MaxViT</b></td>
   </tr>
   <tr>
-    <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/noduleensemble.png" width="300"/><br><b>Ensemble</b></td>
+    <td align="center"><img src="https://github.com/EdrinHasaj/Chest-X-ray-Diagnosis/blob/main/figures/ensemble_gradcam.png" width="300"/><br><b>Ensemble</b></td>
     <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/nodule.png" width="300"/><br><b>Original X-ray</b></td>
     <td align="center"><img src="https://github.com/EdrinHasaj/CSC490H5-Project/raw/main/figures/nodulereference.png" width="300"/><br><b>Reference</b></td>
   </tr>
