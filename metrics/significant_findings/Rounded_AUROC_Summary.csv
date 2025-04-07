@@ -1,0 +1,7 @@
+Unnamed: 0,Model,Test AUROC,AUROC (Gamma 0.6),AUROC (Gamma 0.8),AUROC (Gamma 1.0),AUROC (Focal Loss),TTA AUROC
+0,coatnet_2_rw_224.sw_in12k_ft_in1k,0.8411,0.8302,0.8366,0.5449,0.8286,0.8417
+1,convnext_large.fb_in22k,0.8359,0.8217,0.8386,0.8207,0.8326,0.8422
+2,densenet121,0.8311,0.8192,0.8273,0.8326,0.8215,0.8357
+3,maxvit_rmlp_base_rw_224.sw_in12k_ft_in1k,0.8382,0.8243,0.8407,0.8183,0.8265,0.8453
+4,swin_large_patch4_window7_224,0.8312,0.8201,0.8213,0.8306,0.8263,0.8318
+5,vgg19.tv_in1k,0.8124,0.8088,0.8075,0.8154,0.7917,0.8183
