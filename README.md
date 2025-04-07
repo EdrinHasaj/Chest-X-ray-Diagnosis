@@ -18,7 +18,6 @@ Our goal is to employ a deep learning model to recognize patterns in chest X-ray
 - [Model Architectures Explored](#model-architectures-explored)  
 - [Singular Model Results](#singular-model-results)  
 - [Gamma Correction Augmentation](#gamma-correction-augmentation)  
-- [Test Time Augmentation (TTA)](#test-time-augmentation-tta)  
 - [Ensemble Modeling](#ensemble-modeling)  
   - [Uniform Weighted Average](#1-uniform-weighted-average)  
   - [Differential Evolution + Forward Greedy (Ours)](#2-differential-evolution-de--forward-greedy-selection-novel)  
@@ -185,21 +184,6 @@ Gamma Correction is a non-linear transformation that adjusts the brightness and 
 **Gamma Correction proved highly effective**, especially for rare conditions like Pneumonia (+1.77%), Hernia (+1.12%), and Fibrosis (+0.50%).
 >This increased overall AUROC in two models, ConvNext (+0.27) and MaxVit (+0.22)
 
-## Test Time Augmentation (TTA)
-
-Test Time Augmentation (TTA) improves model performance by applying augmentations (e.g., flips, rotations) to each test image and averaging the predictions from these variants. This helps reduce prediction variance and enhances generalization, especially useful in medical imaging tasks like Chest X-ray classification.
-
-| Model        | Type                | Best AUROC | TTA AUROC |
-|--------------|---------------------|------------|-----------|
-| VGG19        | CNN                 | 0.8065     | 0.8183    |
-| DenseNet121  | Dense CNN           | 0.8316     | 0.8318    |
-| MaxViT       | CNN + Transformer   | **0.8385** | **0.8453**|
-| CoAtNet      | Hybrid Transformer  | 0.8347     | 0.8417    |
-| ConvNeXt     | Conv-inspired CNN   | 0.8359     | 0.8422    |
-| Swin         | Pure Transformer    | 0.8312     | 0.8318    |
-
-TTA led to consistent AUROC improvements across all models, with the largest gain observed in MaxViT. These results highlight TTA’s effectiveness in enhancing robustness and predictive accuracy in multi-label chest X-ray diagnosis.
-
 
 ## Ensemble Modeling
 
@@ -268,12 +252,13 @@ def forward_greedy_de(models, val_preds, val_labels):
 
     return selected_models, best_weights, best_score
 ```
-## Ensemble AUROC Results
 
-| **Ensemble Method**           | **AUROC** | **TTA AUROC** | **Competitive Best** | **Optimal Model Weights** |
-|-------------------------------|-----------|---------------|------------------------|----------------------------|
-| Uniform Weighted Average      | 0.8562    | 0.8571        | 0.8532                 | MaxViT: 0.20, CoAtNet: 0.20, DenseNet121: 0.20, Swin: 0.20, ConvNeXt: 0.20, VGG19: 0.00 |
-| DE + Forward Greedy (Ours)    | **0.8565**| **0.8577**    | **0.8543**             | MaxViT: 0.1663, ConvNeXt: 0.1877, DenseNet121: 0.2052, CoAtNet: 0.1524, Swin: 0.1747, VGG19: 0.1138 |
+### Results Summary
+
+| **Ensemble Method**           | **AUROC** | **Competitive Best** | **Optimal Model Weights** |
+|-------------------------------|-----------|------------------------|----------------------------|
+| Uniform Weighted Average      | 0.8562    | 0.8532                 | MaxViT: 0.20, CoAtNet: 0.20, DenseNet121: 0.20, Swin: 0.20, ConvNeXt: 0.20, VGG19: 0.00 |
+| DE + Forward Greedy (Ours)    | **0.8565**| **0.8543**             | MaxViT: 0.2707, ConvNeXt: 0.2114, DenseNet121: 0.1911, CoAtNet: 0.1496, Swin: 0.1412, VGG19: 0.0360 |
 
 >  Our **greedy DE ensemble** slightly outperforms both the uniform average and competitive SynthEnsemble benchmark, while also offering interpretable weighting per model.
 
